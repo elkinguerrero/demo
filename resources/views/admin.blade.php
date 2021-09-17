@@ -12,6 +12,7 @@
                     <th scope="col">Usuario</th>
                     <th scope="col">Correo</th>
                     <th scope="col">Editar</th>
+                    <th scope="col">Borrar</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -19,11 +20,16 @@
                         <tr style="text-align: center;">
                             <td>{{$item->name}}</td>
                             <td>{{$item->email}}</td>
-                            <td><i class="fa fa-trash" val_id="{{$item->id}}" style="cursor:pointer"></td>
+                            <td><a href="{{route('edit')}}/{{$item->id}}"><i class="fa fa-edit" style="cursor:pointer"></i></td>
+                            <td><a href="{{route('edit',$item)}}"><i class="fa fa-trash" style="cursor:pointer"></td>
                         </tr>
                     @endforeach
                 </tbody>
               </table>
+              <form action="{{ route('agregarusuarios')}}" method="GET" style="text-align: end;">
+                <button type="submit" class="btn btn-primary login" style="margin: 20px 0 20px 0;">Agregar</button>
+              </form>
+            </form>
         </div>
     </div>
     

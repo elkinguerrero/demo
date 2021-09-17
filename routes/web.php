@@ -1,19 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Controlador_usuario;
+use App\Http\Controllers\Controladorusuario;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+Route::post('/validarlogin/{id?}', [Controladorusuario::class, 'validarlogin']) -> name("validarlogin");
+Route::post('/editar_usuario/{id?}', [Controladorusuario::class, 'editar_usuario']) -> name("editarusuario");
+Route::post('/crear_usuario/{id?}', [Controladorusuario::class, 'crear_usuario']) -> name("crear_usuario");
 
-Route::get('/validarlogin/{id?}', [Controlador_usuario::class, 'validarlogin']) -> name("validarlogin");
 
-Route::get(`/login`, [Controlador_usuario::class, 'login']) -> name("login");
+Route::get('/admin', [Controladorusuario::class, 'admin']);
+Route::get('/agregarusuarios', [Controladorusuario::class, 'agregarusuarios']) -> name("agregarusuarios");
+Route::get('/edit/{id?}', [Controladorusuario::class, 'edit']) -> name("edit");
+
+Route::get(`/login`, [Controladorusuario::class, 'login']) -> name("login");
+
