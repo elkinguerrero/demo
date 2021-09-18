@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 class Controladorusuario extends Controller
 {
     function login(){
+        session(['confirm' => '']);
         return view('login' );
     }
 
@@ -102,12 +103,13 @@ class Controladorusuario extends Controller
 
         //Se valida si existe el usuario
         if( $usuario == '' ){
-            return 'no login';
+            session(['confirm' => 'Usuario o contraseña incorrecta']);
+            return view('login');
         }else if( $usuario -> perfil == "1" ){
             $usuarios = User::All();
             return view('admin', compact('usuarios') );
         }else if( $usuario -> perfil == "0" ){
-            return  "Debe ingresar como administrador";
+            return  "No hay modulos creados para este perfil";
         }
     }
 }
